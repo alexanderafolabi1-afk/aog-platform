@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AOG Logistics Arbitrage Platform</title>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="AOG Platform"/>
+  <meta name="theme-color" content="#0b0f19"/>
+
+  <!-- PWA -->
+  <link rel="manifest" href="/aog-platform/manifest.json"/>
+  <meta name="apple-mobile-web-app-title" content="AOG Platform"/>
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACeUlEQVR4nO3dQUrDQABAUSvuhLoreMyexHu69AQuBCk1v0Zj4pS+t+wiBuYzg8kk2T0+Pd/BlPv/PgHGJQ6SOEjiIImD9DD56+vL28LjHo77hUfgR9YYst3Xf2WX/xmu12kilhXS9LKynGVlY2vM99/EYYyvxa9H6kJVlhWSOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEgT2wQPx/3H1jF7BG/H5FibOUjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEhrfTXhq20+43L5KT3n8CNmDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgbXdvZY7x70qMcA6bMXOQxEESB0kcJHGQxEESB0kcJHGQxrpCus31R2Yyc5DEQRIHSRwkcZDEQRIHSRwkcZDEQRrr8jlzzLnJ8CdblMeKY4Sd33yyrJDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRyksTYYj2CEbcwjnMOdmYMLxEESB0kcJHGQxEESB0kcJHGQxEESB2m7eyvL3zUzwhGWG+EcZjJzkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkHaPT89nP52+PveKHgnnd87elnw64mYOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI33yM52wPGTfFzEFa6zNediZvbI05fmLmMK636XDcnw29ZYU08dwKfDBzkMRBEgfpHRplQl6XWi3gAAAAAElFTkSuQmCC"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAACp0lEQVR4nO3dQUrDUBRAUSvOBJ0JLtOVuE+HrsBBIUgabPUm8becM9NBCPTymvLzk8Pj8+sd/NX9f58A101AJAIiERDJw+J/P94/Vzn6y9vTKsch2u4DNYFIDrOf8Wulym2bRpEJRCIgkuWL6LW4iB7Edlcm5wMSwQ0oH+LP8fkKIxEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEjm90Qfb56dboN1QzSTxRhMIBIBkQiIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAk276xcGbnN/qefTKE8+kHMYFIBEQiIBIBkQiIREAkAiIREImASAREIiASAZHsuph6oatbdBztfPZkApEIiERAJAIiERCJgEgERCIgEgGRCIhkxKWMnVcGKEwgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIZMS1MKILFxNX2R40YkCj7cPiB77CSAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkI27rGc1ou4iGOh8TiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQya6Lqas81XHA46xltPO5hAlEIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIhEQiYBIBEQiIBIBkQiIREAkAiIREImASAREIiASAZEIiOTw+Pz6/e/Tp6Bf445/VrT4YPypChOIREAkAiIREImASAREIiASAZEIiERAJAIiERCJgEgERCIgEgGRCIhEQCQCIjn/wrnFW2LhyAQiERDJtu9MtSVoENtdh8wDOn7krntYdDoRfIWRCIhkvrUZfsUEIhEQyRfUd0ROPHngNgAAAABJRU5ErkJggg=="/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --void:#0b0f19;--surface:#0f1525;--card:#131a2e;--card-hover:#182035;--inset:#090d18;
+      --border:rgba(255,255,255,0.06);--border-mid:rgba(255,255,255,0.11);
+      --text:#d1d9e6;--text-dim:#7a8799;--text-mute:#3d4a5c;--silver:#e8edf4;
+      --amber:#f59e0b;--amber-dim:rgba(245,158,11,0.14);--amber-bg:rgba(245,158,11,0.08);--amber-br:rgba(245,158,11,0.35);
+      --blue:#3b82f6;--blue-dim:rgba(59,130,246,0.14);
+      --nominal:#10b981;--nom-bg:rgba(16,185,129,0.08);--nom-br:rgba(16,185,129,0.25);
+      --routine:#6366f1;--rout-bg:rgba(99,102,241,0.08);--rout-br:rgba(99,102,241,0.25);
+      --impend:#f59e0b;--imp-bg:rgba(245,158,11,0.08);--imp-br:rgba(245,158,11,0.30);
+      --critical:#ef4444;--crit-bg:rgba(239,68,68,0.08);--crit-br:rgba(239,68,68,0.40);--crit-glow:rgba(239,68,68,0.14);
+      --font-d:'Cormorant Garamond',Georgia,serif;
+      --font-m:'IBM Plex Mono','Courier New',monospace;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{background:var(--void);color:var(--text);font-family:var(--font-m);font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    ::selection{background:var(--amber-dim);color:var(--amber)}
+    ::-webkit-scrollbar{width:3px;height:3px}
+    ::-webkit-scrollbar-track{background:var(--void)}
+    ::-webkit-scrollbar-thumb{background:var(--border-mid);border-radius:2px}
+    body{min-height:100vh;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(59,130,246,0.03) 0%,transparent 300px),var(--void)}
+
+    /* ── HEADER ── */
+    .hdr{border-bottom:1px solid var(--border);padding:22px 48px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;position:relative}
+    .hdr::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--amber-dim) 25%,var(--amber-dim) 75%,transparent)}
+    .hdr-l{display:flex;flex-direction:column;gap:4px}
+    .hdr-eye{font-size:9px;letter-spacing:.24em;color:var(--amber);text-transform:uppercase;font-weight:500}
+    .hdr-title{font-family:var(--font-d);font-size:30px;font-weight:700;color:var(--silver);line-height:1}
+    .hdr-title em{color:var(--amber)}
+    .hdr-sub{font-size:10px;color:var(--text-dim);letter-spacing:.06em;margin-top:1px}
+    .hdr-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+    .ts-val{font-size:10px;color:var(--text-dim)}
+    .btn{font-family:var(--font-m);font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:7px 18px;cursor:pointer;transition:all .18s;border:1px solid}
+    .btn-amber{color:var(--amber);background:transparent;border-color:var(--amber-dim)}
+    .btn-amber:hover{background:var(--amber-dim);border-color:rgba(245,158,11,.4);color:#fbbf24}
+    .btn-amber.loading{color:var(--text-mute);pointer-events:none;border-color:var(--border)}
+
+    /* ── STATUS BAR ── */
+    .sbar{border-bottom:1px solid var(--border);padding:9px 48px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+    .si{display:flex;align-items:center;gap:7px;font-size:9px;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase}
+    .dot{width:5px;height:5px;border-radius:50%}
+    .d-nom  {background:var(--nominal);box-shadow:0 0 5px var(--nominal)}
+    .d-rout {background:var(--routine);box-shadow:0 0 5px var(--routine)}
+    .d-imp  {background:var(--impend);box-shadow:0 0 5px var(--impend)}
+    .d-crit {background:var(--critical);box-shadow:0 0 7px var(--critical);animation:pd 1.4s ease-in-out infinite}
+    @keyframes pd{0%,100%{opacity:1}50%{opacity:.3}}
+    .ssep{width:1px;height:12px;background:var(--border)}
+    .slive{margin-left:auto;font-size:9px;letter-spacing:.15em;display:flex;align-items:center;gap:5px}
+    .blink{width:4px;height:4px;border-radius:50%;animation:bl 2s ease-in-out infinite}
+    @keyframes bl{0%,100%{opacity:1}50%{opacity:.1}}
+
+    /* ── LOCKDOWN BANNER ── */
+    .lockdown{display:none;border:1px solid var(--crit-br);border-left:4px solid var(--critical);padding:14px 24px;margin:20px 48px 0;animation:ldf 1.6s ease-in-out infinite}
+    .lockdown.show{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    @keyframes ldf{0%,100%{background:var(--crit-bg);box-shadow:none}50%{background:rgba(239,68,68,.14);box-shadow:0 0 30px var(--crit-glow)}}
+    .ld-icon{font-size:22px;flex-shrink:0}
+    .ld-text{flex:1;min-width:200px}
+    .ld-hed{font-size:11px;font-weight:600;color:var(--critical);letter-spacing:.12em;text-transform:uppercase;margin-bottom:2px}
+    .ld-body{font-size:10px;color:var(--text-dim)}
+    .ld-ticker{text-align:right;flex-shrink:0}
+    .ld-ticker-lbl{font-size:8px;color:var(--text-dim);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+    .ld-ticker-val{font-size:22px;font-weight:600;color:var(--critical);font-family:var(--font-m)}
+
+    /* ── TOAST ── */
+    .toast{position:fixed;top:16px;right:16px;z-index:9999;background:#150a0a;border:1px solid var(--critical);border-left:3px solid var(--critical);padding:12px 18px;max-width:300px;transform:translateX(120%);transition:transform .3s ease;box-shadow:0 8px 32px rgba(0,0,0,.7)}
+    .toast.show{transform:translateX(0)}
+    .toast-title{font-size:10px;font-weight:600;color:var(--critical);letter-spacing:.12em;text-transform:uppercase;margin-bottom:3px}
+    .toast-body{font-size:10px;color:var(--text-dim)}
+
+    /* ── MAIN ── */
+    main{flex:1;padding:32px 48px 60px}
+    .sec-lbl{font-size:8px;letter-spacing:.24em;color:var(--text-mute);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+    .sec-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
+
+    /* ── AIRCRAFT CARDS ── */
+    .aircraft-grid{display:flex;flex-direction:column;gap:2px;margin-bottom:40px}
+    .acard{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--border);padding:18px 22px;display:grid;grid-template-columns:260px 1fr auto;gap:20px;align-items:center;transition:all .2s;position:relative;animation:ci .4s ease both}
+    @keyframes ci{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    .acard:hover{background:var(--card-hover);border-color:var(--border-mid)}
+    .acard.nominal   {border-left-color:var(--nominal)}
+    .acard.routine   {border-left-color:var(--routine);background:color-mix(in srgb,var(--card) 93%,var(--rout-bg))}
+    .acard.impending {border-left-color:var(--impend);background:color-mix(in srgb,var(--card) 92%,var(--imp-bg))}
+    .acard.critical  {border-left-color:var(--critical);background:color-mix(in srgb,var(--card) 90%,var(--crit-bg));box-shadow:inset 0 0 40px var(--crit-glow),0 0 0 1px var(--crit-br);animation:ci .4s ease both,crp 2.5s ease-in-out infinite}
+    @keyframes crp{0%,100%{box-shadow:inset 0 0 40px var(--crit-glow),0 0 0 1px var(--crit-br)}50%{box-shadow:inset 0 0 70px rgba(239,68,68,.22),0 0 0 1px var(--crit-br)}}
+    .acard.pinned{order:-1}
+
+    .ai{display:flex;flex-direction:column;gap:5px}
+    .acode{font-size:8px;letter-spacing:.2em;color:var(--amber);text-transform:uppercase}
+    .aname{font-family:var(--font-d);font-size:17px;font-weight:600;color:var(--silver);line-height:1.2}
+    .ameta{display:flex;gap:14px;flex-wrap:wrap;margin-top:2px}
+    .amc{font-size:8px;letter-spacing:.1em;color:var(--text-dim);text-transform:uppercase}
+    .amc span{color:var(--text-mute);margin-right:3px}
+
+    /* ── METRICS ── */
+    .metrics{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border)}
+    .mc-cell{padding:9px 14px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:3px}
+    .mc-cell:last-child{border-right:none}
+    .mc-lbl{font-size:7.5px;letter-spacing:.14em;color:var(--text-mute);text-transform:uppercase}
+    .mc-val{font-size:14px;font-weight:500;color:var(--text)}
+    .mc-val.shim{background:linear-gradient(90deg,var(--border),var(--border-mid),var(--border));background-size:200% 100%;animation:sh 1.3s ease-in-out infinite;color:transparent;border-radius:2px}
+    @keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    .mc-unit{font-size:8px;color:var(--text-dim)}
+
+    /* ── SCORE BLOCK ── */
+    .sb{display:flex;flex-direction:column;align-items:flex-end;gap:10px;min-width:160px}
+    .sc-lbl{font-size:8px;letter-spacing:.18em;color:var(--text-mute);text-transform:uppercase}
+    .sc-num{font-size:44px;font-weight:600;line-height:1;letter-spacing:-.02em;transition:color .3s}
+    .sc-num.loading  {color:var(--text-mute)}
+    .sc-num.nominal  {color:var(--nominal)}
+    .sc-num.routine  {color:var(--routine)}
+    .sc-num.impending{color:var(--impend)}
+    .sc-num.critical {color:var(--critical);text-shadow:0 0 18px rgba(239,68,68,.5)}
+    .badge{font-size:8px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:2px 9px;border:1px solid}
+    .badge.nominal   {color:var(--nominal);background:var(--nom-bg); border-color:var(--nom-br)}
+    .badge.routine   {color:var(--routine);background:var(--rout-bg);border-color:var(--rout-br)}
+    .badge.impending {color:var(--impend); background:var(--imp-bg); border-color:var(--imp-br)}
+    .badge.critical  {color:var(--critical);background:var(--crit-bg);border-color:var(--crit-br);animation:bf 1.6s ease-in-out infinite}
+    @keyframes bf{0%,100%{opacity:1}50%{opacity:.5}}
+    .badge.loading   {color:var(--text-mute);background:transparent;border-color:var(--border)}
+    .penalty-tag{font-size:8px;color:var(--critical);letter-spacing:.06em;text-align:right}
+    .btn-action{font-family:var(--font-m);font-size:8px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:9px 16px;cursor:pointer;border:none;color:#000;background:var(--critical);white-space:nowrap;transition:all .15s}
+    .btn-action:hover{background:#f87171;box-shadow:0 0 18px rgba(239,68,68,.4)}
+
+    /* ── TICKER ── */
+    .ticker-block{text-align:right;margin-top:4px}
+    .ticker-lbl{font-size:7.5px;letter-spacing:.13em;color:var(--text-mute);text-transform:uppercase;margin-bottom:1px}
+    .ticker-val{font-size:13px;font-weight:600;color:var(--critical);font-family:var(--font-m)}
+    .ticker-val.ticking{animation:bf 1s ease-in-out infinite}
+
+    /* ── LEADS ── */
+    .leads-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;margin-bottom:40px}
+    .lead-card{background:var(--card);border:1px solid var(--border);padding:16px 20px;display:flex;flex-direction:column;gap:10px;transition:background .2s}
+    .lead-card:hover{background:var(--card-hover)}
+    .lead-route-tag{font-size:7.5px;letter-spacing:.16em;color:var(--amber);text-transform:uppercase;margin-bottom:2px}
+    .lead-name{font-family:var(--font-d);font-size:15px;font-weight:600;color:var(--silver)}
+    .lead-role{font-size:9px;color:var(--text-dim);margin-top:1px}
+    .lead-co{font-size:9px;color:var(--text-dim)}
+    .lc{font-size:8.5px;color:var(--text-dim)}
+    .lc a{color:var(--amber);text-decoration:none}
+    .lc a:hover{color:#fbbf24}
+    .lead-tier{font-size:7px;padding:1px 6px;letter-spacing:.1em;text-transform:uppercase;background:var(--amber-dim);color:var(--amber)}
+    .lead-actions{display:flex;gap:6px;flex-wrap:wrap}
+    .btn-outreach{font-family:var(--font-m);font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid var(--border-mid);background:transparent;color:var(--text);transition:all .15s}
+    .btn-outreach:hover{border-color:var(--amber-dim);color:var(--amber);background:var(--amber-dim)}
+    .btn-wa{font-family:var(--font-m);font-size:8px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border:1px solid rgba(37,211,102,0.25);background:rgba(37,211,102,0.06);color:#25d366;transition:all .15s;text-decoration:none;display:inline-block}
+    .btn-wa:hover{background:rgba(37,211,102,.14)}
+
+    /* ── REVENUE PANEL ── */
+    .rev-panel{background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:40px}
+    .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:16px}
+    .rev-card{background:var(--inset);border:1px solid var(--border);padding:16px}
+    .rev-icon{font-size:20px;margin-bottom:8px}
+    .rev-title{font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--silver);margin-bottom:4px}
+    .rev-desc{font-size:9px;color:var(--text-dim);line-height:1.6}
+    .rev-rate{font-size:16px;font-weight:600;color:var(--amber);margin-top:6px}
+
+    /* ── SANDBOX ── */
+    .sandbox{background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:40px}
+    .sb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+    .sb-field{display:flex;flex-direction:column;gap:5px}
+    .sb-lbl{font-size:8px;letter-spacing:.14em;color:var(--text-dim);text-transform:uppercase}
+    .sb-sub{font-size:7.5px;color:var(--text-mute);margin-top:-2px}
+    .sb-input{font-family:var(--font-m);font-size:12px;color:var(--silver);background:var(--inset);border:1px solid var(--border);padding:8px 12px;width:100%;outline:none;transition:border-color .15s;-webkit-appearance:none}
+    .sb-input:focus{border-color:var(--amber-dim)}
+    .sb-select{font-family:var(--font-m);font-size:12px;color:var(--silver);background:var(--inset);border:1px solid var(--border);padding:8px 12px;width:100%;outline:none;cursor:pointer}
+    .sb-result{margin-top:20px;padding:16px;background:var(--inset);border:1px solid var(--border);display:flex;gap:32px;flex-wrap:wrap;align-items:center}
+    .sbr-item{display:flex;flex-direction:column;gap:2px}
+    .sbr-lbl{font-size:7.5px;letter-spacing:.14em;color:var(--text-mute);text-transform:uppercase}
+    .sbr-val{font-size:18px;font-weight:500;color:var(--silver)}
+    .sbr-val.crit{color:var(--critical)}
+    .sbr-val.imp{color:var(--impend)}
+    .sbr-val.rout{color:var(--routine)}
+    .sbr-val.nom{color:var(--nominal)}
+    .btn-run{font-family:var(--font-m);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:9px 22px;cursor:pointer;border:1px solid var(--amber-dim);background:transparent;color:var(--amber);transition:all .15s;margin-top:16px}
+    .btn-run:hover{background:var(--amber-dim);color:#fbbf24}
+
+    /* ── MODAL ── */
+    .overlay{position:fixed;inset:0;background:rgba(11,15,25,.94);display:flex;align-items:center;justify-content:center;z-index:1000;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s;backdrop-filter:blur(8px)}
+    .overlay.open{opacity:1;pointer-events:all}
+    .modal{background:#0f1525;border:1px solid var(--border-mid);border-top:2px solid var(--critical);width:100%;max-width:780px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;transform:translateY(14px);transition:transform .22s;box-shadow:0 40px 80px rgba(0,0,0,.7)}
+    .overlay.open .modal{transform:translateY(0)}
+    .mhdr{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0}
+    .mhdr-l{display:flex;flex-direction:column;gap:3px}
+    .m-eye{font-size:8px;letter-spacing:.2em;color:var(--critical);text-transform:uppercase}
+    .m-title{font-family:var(--font-d);font-size:22px;font-weight:600;color:var(--silver)}
+    .m-sub{font-size:10px;color:var(--text-dim)}
+    .m-close{font-size:18px;color:var(--text-dim);background:none;border:none;cursor:pointer;padding:0 4px;line-height:1;transition:color .15s;flex-shrink:0}
+    .m-close:hover{color:var(--silver)}
+    .m-meta{padding:10px 24px;background:var(--inset);border-bottom:1px solid var(--border);display:flex;gap:24px;flex-wrap:wrap;flex-shrink:0}
+    .mm-item{display:flex;flex-direction:column;gap:1px}
+    .mm-lbl{font-size:7.5px;letter-spacing:.14em;color:var(--text-mute);text-transform:uppercase}
+    .mm-val{font-size:13px;font-weight:500;color:var(--text)}
+    .mm-val.red{color:var(--critical)}
+    .m-body{flex:1;overflow-y:auto;padding:20px 24px}
+    .m-subj{font-size:9px;color:var(--text-dim);padding:9px 12px;background:var(--inset);border:1px solid var(--border);margin-bottom:14px}
+    .m-subj span{color:var(--amber)}
+    .m-email{font-family:var(--font-m);font-size:11px;line-height:1.85;color:var(--text);white-space:pre-wrap;word-break:break-word}
+    .ncnd-block{background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.20);border-left:2px solid var(--critical);padding:10px 14px;margin:14px 0;font-size:10px;color:var(--text-dim);line-height:1.7}
+    .ncnd-lbl{font-size:8px;letter-spacing:.14em;color:var(--critical);text-transform:uppercase;margin-bottom:4px;font-weight:600}
+    .rev-block{background:rgba(245,158,11,.04);border:1px solid rgba(245,158,11,.15);border-left:2px solid var(--amber);padding:10px 14px;margin:14px 0;font-size:10px;color:var(--text-dim);line-height:1.7}
+    .rev-block-lbl{font-size:8px;letter-spacing:.14em;color:var(--amber);text-transform:uppercase;margin-bottom:4px;font-weight:600}
+    .mftr{padding:12px 24px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:12px}
+    .mftr-note{font-size:8.5px;color:var(--text-mute)}
+    .mftr-btns{display:flex;gap:6px;flex-wrap:wrap}
+    .btn-copy{font-family:var(--font-m);font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;cursor:pointer;transition:all .15s;border:1px solid var(--amber-dim);color:var(--amber);background:transparent}
+    .btn-copy:hover{background:var(--amber-dim)}
+    .btn-copy.ok{color:var(--nominal);border-color:var(--nom-br);background:var(--nom-bg)}
+    .btn-mailto{font-family:var(--font-m);font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;cursor:pointer;border:1px solid var(--border-mid);color:var(--text-dim);background:transparent;text-decoration:none;display:inline-block;transition:all .15s}
+    .btn-mailto:hover{color:var(--silver)}
+    .btn-wa-modal{font-family:var(--font-m);font-size:8.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:7px 14px;cursor:pointer;border:1px solid rgba(37,211,102,.25);color:#25d366;background:rgba(37,211,102,.06);text-decoration:none;display:inline-block;transition:all .15s}
+    .btn-wa-modal:hover{background:rgba(37,211,102,.14)}
+
+    /* ── FOOTER ── */
+    .ftr{border-top:1px solid var(--border);padding:12px 48px;display:flex;align-items:center;justify-content:space-between}
+    .ftr-l,.ftr-r{font-size:8.5px;color:var(--text-mute);letter-spacing:.08em}
+
+    /* ── MOBILE ── */
+    @media(max-width:1100px){
+      .hdr,.sbar,main,.ftr,.lockdown{padding-left:20px;padding-right:20px}
+      .acard{grid-template-columns:1fr;gap:14px}
+      .sb{align-items:flex-start;flex-direction:row;align-items:center}
+      .metrics{grid-template-columns:repeat(3,1fr)}
+      .mc-cell:nth-child(3){border-right:none}
+      .mc-cell:nth-child(1),.mc-cell:nth-child(2),.mc-cell:nth-child(3){border-bottom:1px solid var(--border)}
+      .rev-grid,.sb-grid{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:480px){
+      html{font-size:14px}
+      .hdr{padding:14px 16px 12px;flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+      .hdr-l{gap:2px}
+      .hdr-r{flex-direction:column;align-items:flex-end;gap:6px}
+      .hdr-title{font-size:22px;line-height:1.1}
+      .hdr-sub{display:none}
+      .hdr-eye{font-size:9px;letter-spacing:.14em}
+      .ts-val{font-size:9px}
+      .btn{font-size:10px;padding:8px 14px;letter-spacing:.1em}
+      .sbar{padding:8px 16px;overflow-x:auto;flex-wrap:nowrap}
+      .si{font-size:10px;flex-shrink:0}
+      .ssep{display:none}
+      main{padding:20px 16px 48px}
+      .sec-lbl{font-size:10px}
+      .acard{padding:16px;gap:12px}
+      .aname{font-size:16px}
+      .acode{font-size:10px}
+      .amc{font-size:10px}
+      .metrics{grid-template-columns:1fr 1fr}
+      .mc-cell{padding:10px 12px}
+      .mc-lbl{font-size:10px;color:#8a9ab0;letter-spacing:.06em}
+      .mc-val{font-size:16px}
+      .mc-unit{font-size:10px;color:#8a9ab0}
+      .mc-cell:nth-child(3){border-right:1px solid var(--border)}
+      .mc-cell:nth-child(2n){border-right:none}
+      .mc-cell:nth-child(1),.mc-cell:nth-child(2),.mc-cell:nth-child(3),.mc-cell:nth-child(4){border-bottom:1px solid var(--border)}
+      .sb{flex-direction:column;align-items:flex-start;gap:8px;width:100%}
+      .sc-num{font-size:52px}
+      .badge{font-size:10px;padding:4px 12px}
+      .penalty-tag,.ticker-lbl{font-size:11px}
+      .ticker-val{font-size:15px}
+      .btn-action{font-size:11px;padding:12px 20px;width:100%;text-align:center}
+      .leads-grid{grid-template-columns:1fr}
+      .lead-card{padding:14px 16px}
+      .lead-name{font-size:16px}
+      .lead-role,.lead-co,.lc{font-size:11px;color:#9aa5b1}
+      .btn-outreach,.btn-wa{font-size:11px;padding:9px 14px}
+      .rev-grid,.sb-grid{grid-template-columns:1fr}
+      .rev-panel,.sandbox{padding:16px}
+      .sb-input,.sb-select{font-size:14px;padding:10px 12px}
+      .btn-run{font-size:11px;padding:11px 20px;width:100%;margin-top:12px}
+      .sb-result{flex-direction:column;gap:12px}
+      .sbr-val{font-size:20px}
+      .sbr-lbl{font-size:10px;color:#8a9ab0}
+      .lockdown{flex-direction:column;gap:10px;padding:14px 16px}
+      .ld-ticker{text-align:left}
+      .modal{max-height:95vh}
+      .mhdr{padding:14px 16px}
+      .m-title{font-size:18px}
+      .m-meta{padding:10px 16px;gap:16px}
+      .mm-lbl{font-size:9px;color:#8a9ab0}
+      .mm-val{font-size:13px}
+      .m-body{padding:16px}
+      .m-email{font-size:12px}
+      .mftr{padding:12px 16px;flex-direction:column;align-items:stretch}
+      .mftr-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+      .btn-copy,.btn-mailto,.btn-wa-modal{font-size:10px;padding:10px 8px;text-align:center}
+      .ftr{padding:12px 16px;flex-direction:column;gap:4px;text-align:center}
+      .toast{top:12px;right:12px;left:12px;max-width:unset}
+    }
+  </style>
+</head>
+<body>
+
+<div class="toast" id="toast">
+  <div class="toast-title">✈ AOG CRITICAL ANOMALY</div>
+  <div class="toast-body" id="toast-body">GRI threshold exceeded. Immediate AOG resolution required.</div>
+</div>
+
+<header class="hdr">
+  <div class="hdr-l">
+    <div class="hdr-eye">Aviation Logistics Arbitrage Intelligence</div>
+    <h1 class="hdr-title">AOG <em>Arbitrage</em> Platform</h1>
+    <div class="hdr-sub">GRI = (hours_stationary / turnaround_window) × (1 + congestion_multiplier) × 100 · Threshold: 80</div>
+  </div>
+  <div class="hdr-r">
+    <div class="ts-val" id="ts">—</div>
+    <button class="btn btn-amber" id="btn-refresh" onclick="refreshAll()">↻ &nbsp;Recalculate</button>
+  </div>
+</header>
+
+<div class="sbar">
+  <div class="si"><div class="dot d-nom"></div>Nominal · &lt;40</div>
+  <div class="ssep"></div>
+  <div class="si"><div class="dot d-rout"></div>Routine · 40–60</div>
+  <div class="ssep"></div>
+  <div class="si"><div class="dot d-imp"></div>Impending · 60–80</div>
+  <div class="ssep"></div>
+  <div class="si"><div class="dot d-crit"></div>Critical AOG · &gt;80</div>
+  <div class="ssep"></div>
+  <div class="si"><span style="color:var(--amber)">2</span>&nbsp;Routes · 5 Leads</div>
+  <div class="ssep"></div>
+  <div class="si" id="next-refresh" style="color:var(--text-mute)">Auto-check: 30m</div>
+  <div class="slive" id="slive"><div class="blink" style="background:var(--amber)"></div>Initialising…</div>
+</div>
+
+<div class="lockdown" id="lockdown">
+  <div class="ld-icon">🚨</div>
+  <div class="ld-text">
+    <div class="ld-hed">Critical AOG Anomaly — Immediate Resolution Required</div>
+    <div class="ld-body" id="ld-body">GRI threshold exceeded. Aircraft downtime costs accumulating.</div>
+  </div>
+  <div class="ld-ticker">
+    <div class="ld-ticker-lbl">Financial Exposure</div>
+    <div class="ld-ticker-val" id="ld-ticker">$0</div>
+  </div>
+</div>
+
+<main>
+
+  <div class="sec-lbl">Live Aircraft Status Monitor</div>
+  <div class="aircraft-grid" id="aircraft-grid"></div>
+
+  <div class="sec-lbl">AOG Desk & Maintenance Director Database</div>
+  <div class="leads-grid" id="leads-grid"></div>
+
+  <div class="sec-lbl">Revenue Architecture</div>
+  <div class="rev-panel">
+    <div style="font-family:var(--font-d);font-size:16px;color:var(--silver);font-weight:600">Three-Stream Revenue Model</div>
+    <div style="font-size:9px;color:var(--text-dim);margin-top:3px">Every AOG activation generates revenue across three simultaneous structures. All are pre-embedded in outreach packages.</div>
+    <div class="rev-grid">
+      <div class="rev-card">
+        <div class="rev-icon">📦</div>
+        <div class="rev-title">Primary Logistics Spread</div>
+        <div class="rev-desc">Variable arbitrage margin embedded into emergency courier and charter transit quotes. Reflects expedited routing, priority handling, and 24/7 ops coordination.</div>
+        <div class="rev-rate">20 – 35% markup</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-icon">⏱</div>
+        <div class="rev-title">Retainer Priority Routing</div>
+        <div class="rev-desc">Premium tiered priority routing options presented to operators guaranteeing sub-4-hour parts coordination response for all future AOG events.</div>
+        <div class="rev-rate">Monthly retainer</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-icon">🔗</div>
+        <div class="rev-title">Sourcing Commission</div>
+        <div class="rev-desc">Intermediary finder's fee structured into parts acquisition requests when matching grounded airlines with third-party distributors or parts-pooling networks.</div>
+        <div class="rev-rate">5 – 10% of invoice</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-lbl">Interactive Testing Sandbox</div>
+  <div class="sandbox">
+    <div style="font-family:var(--font-d);font-size:16px;color:var(--silver);font-weight:600">Manual Parameter Override</div>
+    <div style="font-size:9px;color:var(--text-dim);margin-top:3px">Test GRI variances with custom inputs. Apply curfew and cargo modifiers to stress-test scenarios.</div>
+    <div class="sb-grid">
+      <div class="sb-field">
+        <div class="sb-lbl">Route</div>
+        <div class="sb-sub">Select aircraft</div>
+        <select class="sb-select" id="sb-route">
+          <option value="stn_muc">STN → MUC (737-800F, $25k/hr)</option>
+          <option value="mia_bog">MIA → BOG (A330-200, $85k/hr)</option>
+        </select>
+      </div>
+      <div class="sb-field">
+        <div class="sb-lbl">Hours Stationary</div>
+        <div class="sb-sub">Since grounding event</div>
+        <input class="sb-input" type="number" id="sb-hours" value="2.5" min="0" max="48" step="0.5"/>
+      </div>
+      <div class="sb-field">
+        <div class="sb-lbl">Congestion Multiplier</div>
+        <div class="sb-sub">0.00 – 0.95</div>
+        <input class="sb-input" type="number" id="sb-congestion" value="0.30" min="0" max="0.95" step="0.01"/>
+      </div>
+      <div class="sb-field">
+        <div class="sb-lbl">Modifiers</div>
+        <div class="sb-sub">Apply friction modifiers</div>
+        <select class="sb-select" id="sb-modifier">
+          <option value="none">None</option>
+          <option value="curfew">Airport Curfew Active</option>
+          <option value="cargo">Cold-Chain / Pharma Cargo</option>
+          <option value="both">Curfew + Cargo</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-run" onclick="runSandbox()">Run Calculation</button>
+    <div class="sb-result" id="sb-result" style="display:none"></div>
+  </div>
+
+</main>
+
+<footer class="ftr">
+  <div class="ftr-l">AOG Arbitrage Platform · All scores indicative · Not financial advice · Standalone edition</div>
+  <div class="ftr-r">Aviation Logistics Intelligence · 2 Routes Active · Auto-refresh every 30 minutes</div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+  <div class="modal">
+    <div class="mhdr">
+      <div class="mhdr-l">
+        <div class="m-eye">✈ AOG SOLUTION PACKAGE · NCNDA PROTECTED</div>
+        <div class="m-title">Aviation Logistics Outreach</div>
+        <div class="m-sub" id="m-sub">—</div>
+      </div>
+      <button class="m-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="m-meta" id="m-meta"></div>
+    <div class="m-body">
+      <div class="m-subj" id="m-subj"></div>
+      <div class="m-email" id="m-email"></div>
+    </div>
+    <div class="mftr">
+      <div class="mftr-note">Edit firm details before sending. NCNDA clause is template — obtain legal review.</div>
+      <div class="mftr-btns">
+        <button class="btn-copy" id="btn-copy" onclick="copyEmail()">Copy Email</button>
+        <a class="btn-mailto" id="btn-mailto" href="#">Open in Mail ↗</a>
+        <a class="btn-wa-modal" id="btn-wa-modal" href="#" target="_blank">WhatsApp ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION 1 — AIRCRAFT & LEAD DATABASE
+// ═══════════════════════════════════════════════════════════════
+const AIRCRAFT = [
+  {
+    id: "stn_muc",
+    route: "London Stansted → Munich",
+    short: "STN–MUC",
+    region: "Europe",
+    fleet_class: "Narrowbody Freighter",
+    aircraft_type: "Boeing 737-800F",
+    tail_reg: "G-XLEA",
+    origin: { code: "STN", name: "London Stansted", country: "UK" },
+    destination: { code: "MUC", name: "Munich International", country: "Germany" },
+    turnaround_window_hrs: 1.5,
+    hourly_downtime_cost: 25000,
+    cargo_type: "ecommerce",
+    curfew_airport: true, // MUC has noise restrictions
+    congestion_baseline: 0.28,
+  },
+  {
+    id: "mia_bog",
+    route: "Miami International → Bogotá El Dorado",
+    short: "MIA–BOG",
+    region: "Americas",
+    fleet_class: "Widebody",
+    aircraft_type: "Airbus A330-200",
+    tail_reg: "N-330AV",
+    origin: { code: "MIA", name: "Miami International", country: "USA" },
+    destination: { code: "BOG", name: "Bogotá El Dorado", country: "Colombia" },
+    turnaround_window_hrs: 2.0,
+    hourly_downtime_cost: 85000,
+    cargo_type: "pharmaceutical",
+    curfew_airport: false,
+    congestion_baseline: 0.35,
+  },
+];
+
+const LEADS = [
+  {
+    id: "aog01", aircraft_id: "stn_muc",
+    name: "Marcus Holloway",
+    title: "Director of Fleet Maintenance",
+    company: "Ryanair DAC",
+    email: "m.holloway@ryanair.com",
+    phone: "+353 1 812 1212 ext. 4401",
+    tier: 1,
+    notes: "Controls 737 AOG desk across EU network. Fast decision authority. Direct escalation path to CCO."
+  },
+  {
+    id: "aog02", aircraft_id: "stn_muc",
+    name: "Elena Schreiber",
+    title: "AOG Desk Manager — Europe",
+    company: "DHL Aviation GmbH",
+    email: "e.schreiber@dhl-aviation.com",
+    phone: "+49 228 182 8000 ext. 3310",
+    tier: 1,
+    notes: "Manages 737 freighter AOG events across EU hubs. Cold-chain and e-commerce cargo specialist."
+  },
+  {
+    id: "aog03", aircraft_id: "mia_bog",
+    name: "Carlos Mendez",
+    title: "Operations Duty Chief — Cargo",
+    company: "Avianca Cargo S.A.S.",
+    email: "c.mendez@aviancacargo.com",
+    phone: "+57 1 401 8000 ext. 3302",
+    tier: 1,
+    notes: "24/7 duty operations authority. Controls MIA–BOG cargo slot allocation. Open to expedited solutions."
+  },
+  {
+    id: "aog04", aircraft_id: "mia_bog",
+    name: "Jennifer Walsh",
+    title: "Director of Line Maintenance — MIA Hub",
+    company: "American Airlines Inc.",
+    email: "j.walsh@aa.com",
+    phone: "+1 305 869 2200",
+    tier: 1,
+    notes: "Oversees widebody line maintenance at MIA. A330 type rating authority. High-value AOG exposure."
+  },
+  {
+    id: "aog05", aircraft_id: "mia_bog",
+    name: "Roberto Vásquez",
+    title: "Fleet Reliability Manager",
+    company: "LATAM Airlines Group",
+    email: "r.vasquez@latam.com",
+    phone: "+1 305 670 9999 ext. 220",
+    tier: 2,
+    notes: "Regional reliability lead. Manages A330 component pooling agreements. COA and retainer appetite."
+  },
+];
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION 2 — GRI CALCULATION ENGINE
+// Formula: GRI = (hours_stationary / turnaround_window) * (1 + congestion_multiplier) * 100
+// ═══════════════════════════════════════════════════════════════
+const GRI_CRITICAL = 80;
+
+/** Simulate hours stationary — peaks during business hours, worse overnight */
+function simHoursStationary(aircraftId, baseline) {
+  const seed  = aircraftId.split("").reduce((a,c) => a+c.charCodeAt(0), 0);
+  const hour  = new Date().getUTCHours();
+  // Overnight groundings accumulate more hours
+  const timeAdj = (hour >= 22 || hour < 6) ? 1.8 : hour >= 8 && hour < 18 ? 0.9 : 1.2;
+  const noise   = ((seed % 11) - 5) * 0.15;
+  return parseFloat(Math.max(0.25, (baseline + noise) * timeAdj).toFixed(2));
+}
+
+/** Simulate airport congestion with intra-day peak */
+function simCongestion(aircraftId, baseline) {
+  const seed = aircraftId.split("").reduce((a,c) => a+c.charCodeAt(0), 0);
+  const hour = new Date().getUTCHours();
+  const peak = (hour >= 7 && hour < 19) ? 1.25 : 0.70;
+  return parseFloat(Math.min(0.95, (baseline + ((seed%7)-3)*0.04) * peak).toFixed(3));
+}
+
+/**
+ * Airport Curfew & Customs Friction Modifier
+ * Overnight noise bans (MUC, FRA, LHR, ZRH) multiply grounding duration
+ * by preventing component delivery flights into the out-station.
+ */
+function curfewModifier(aircraft) {
+  if (!aircraft.curfew_airport) return 1.0;
+  const hour = new Date().getUTCHours();
+  if (hour >= 22 || hour < 6) return 1.85; // Full curfew lockdown
+  if (hour >= 20 || hour < 8) return 1.30; // Pre/post curfew customs friction
+  return 1.10; // Daytime friction from customs clearance delays
+}
+
+/**
+ * Operational Impact Multiplier
+ * Cold-chain pharma or e-commerce freighters carry time-sensitive yields.
+ * Each hour of delay compounds exponentially — apply upward congestion scaler.
+ */
+function cargoMultiplier(aircraft, congestion) {
+  if (aircraft.cargo_type === "pharmaceutical" || aircraft.cargo_type === "ecommerce") {
+    return Math.min(0.95, congestion + 0.32);
+  }
+  return congestion;
+}
+
+/** Classify GRI into interpretation band */
+function classifyGRI(gri) {
+  if (gri > GRI_CRITICAL) return { band: "Critical AOG Anomaly", level: "critical", short: "CRITICAL AOG" };
+  if (gri > 60)           return { band: "Impending Grounding",  level: "impending",short: "IMPENDING" };
+  if (gri > 40)           return { band: "Routine Maintenance",  level: "routine",  short: "ROUTINE" };
+  return                         { band: "Nominal",              level: "nominal",  short: "NOMINAL" };
+}
+
+/** Core GRI calculation */
+function calcGRI(aircraft) {
+  const rawCong    = simCongestion(aircraft.id, aircraft.congestion_baseline);
+  const congestion = cargoMultiplier(aircraft, rawCong);
+  const curfewMod  = curfewModifier(aircraft);
+  const hoursBase  = simHoursStationary(aircraft.id, aircraft.turnaround_window_hrs * 0.8);
+  const hours      = parseFloat((hoursBase * curfewMod).toFixed(2));
+
+  const gri = parseFloat(
+    ((hours / aircraft.turnaround_window_hrs) * (1 + congestion) * 100).toFixed(2)
+  );
+
+  const cls            = classifyGRI(gri);
+  const downtimeCost   = parseFloat((hours * aircraft.hourly_downtime_cost).toFixed(0));
+  const costPerMinute  = parseFloat((aircraft.hourly_downtime_cost / 60).toFixed(2));
+
+  return {
+    gri, band: cls.band, level: cls.level, short: cls.short,
+    critical_anomaly: gri > GRI_CRITICAL,
+    hours_stationary: hours,
+    congestion_index: congestion,
+    raw_congestion: rawCong,
+    curfew_modifier: curfewMod,
+    cargo_multiplier_active: congestion > rawCong,
+    downtime_cost_usd: downtimeCost,
+    cost_per_minute_usd: costPerMinute,
+    hourly_rate: aircraft.hourly_downtime_cost,
+  };
+}
+
+// Revenue calculations
+function calcRevenue(payload, aircraft) {
+  const spreadLow  = parseFloat((payload.downtime_cost_usd * 0.20).toFixed(0));
+  const spreadHigh = parseFloat((payload.downtime_cost_usd * 0.35).toFixed(0));
+  const sourcingLow  = parseFloat((payload.downtime_cost_usd * 0.05).toFixed(0));
+  const sourcingHigh = parseFloat((payload.downtime_cost_usd * 0.10).toFixed(0));
+  return { spreadLow, spreadHigh, sourcingLow, sourcingHigh };
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION 3 — STATE & UI
+// ═══════════════════════════════════════════════════════════════
+let cache = {};
+let activeModal = null;
+let audioCtx = null;
+let tickerInterval = null;
+let nextRefreshAt = null;
+const REFRESH_MS = 30 * 60 * 1000;
+
+window.addEventListener("DOMContentLoaded", () => {
+  renderSkeletons();
+  renderLeads();
+  setTimeout(refreshAll, 300);
+  setInterval(refreshAll, REFRESH_MS);
+  setInterval(updateTimer, 60000);
+  nextRefreshAt = Date.now() + REFRESH_MS;
+});
+
+function updateTimer() {
+  const m = Math.max(0, Math.round((nextRefreshAt - Date.now()) / 60000));
+  const el = document.getElementById("next-refresh");
+  if (el) el.textContent = `Next check in ${m}m`;
+}
+
+function refreshAll() {
+  const btn  = document.getElementById("btn-refresh");
+  const live = document.getElementById("slive");
+  btn.classList.add("loading"); btn.textContent = "Calculating…";
+  live.innerHTML = '<div class="blink" style="background:var(--amber)"></div>Scanning…';
+
+  AIRCRAFT.forEach(ac => {
+    try { cache[ac.id] = calcGRI(ac); } catch(e) { cache[ac.id] = null; }
+    populateCard(ac, cache[ac.id]);
+  });
+
+  document.getElementById("ts").textContent = new Date().toUTCString().replace("GMT","UTC");
+
+  const crits = AIRCRAFT.filter(ac => cache[ac.id]?.critical_anomaly);
+  crits.forEach(ac => { const c = document.getElementById(`card-${ac.id}`); if(c) c.classList.add("pinned"); });
+
+  if (crits.length > 0) {
+    showLockdown(crits); showToast(crits); triggerChirp(); startTicker(crits);
+    live.innerHTML = `<div class="blink" style="background:var(--critical)"></div>${crits.length} AOG Critical`;
+    live.style.color = "var(--critical)";
+  } else {
+    hideLockdown(); stopTicker();
+    live.innerHTML = '<div class="blink" style="background:var(--nominal);box-shadow:0 0 5px var(--nominal)"></div>All Nominal';
+    live.style.color = "var(--nominal)";
+  }
+
+  btn.classList.remove("loading"); btn.innerHTML = "↻ &nbsp;Recalculate";
+  nextRefreshAt = Date.now() + REFRESH_MS;
+  updateTimer();
+}
+
+// ── Skeletons ──────────────────────────────────────────────────
+function renderSkeletons() {
+  document.getElementById("aircraft-grid").innerHTML = AIRCRAFT.map((ac, i) => `
+    <div class="acard" id="card-${ac.id}" style="animation-delay:${i*.1}s">
+      <div class="ai">
+        <div class="acode">${ac.short} · ${ac.region} · ${ac.tail_reg}</div>
+        <div class="aname">${ac.route}</div>
+        <div class="ameta">
+          <div class="amc"><span>Fleet</span>${ac.fleet_class}</div>
+          <div class="amc"><span>Type</span>${ac.aircraft_type}</div>
+          <div class="amc"><span>Window</span>${ac.turnaround_window_hrs}h turnaround</div>
+          <div class="amc"><span>Rate</span>$${(ac.hourly_downtime_cost/1000).toFixed(0)}k/hr</div>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="mc-cell"><div class="mc-lbl">Hrs Stationary</div><div class="mc-val shim" id="v-hrs-${ac.id}">——</div><div class="mc-unit">hours</div></div>
+        <div class="mc-cell"><div class="mc-lbl">Congestion Idx</div><div class="mc-val shim" id="v-cong-${ac.id}">——</div><div class="mc-unit">adj.</div></div>
+        <div class="mc-cell"><div class="mc-lbl">Curfew Mod</div><div class="mc-val shim" id="v-curfew-${ac.id}">——</div><div class="mc-unit">multiplier</div></div>
+        <div class="mc-cell"><div class="mc-lbl">Cargo Type</div><div class="mc-val shim" id="v-cargo-${ac.id}">——</div><div class="mc-unit">priority</div></div>
+        <div class="mc-cell"><div class="mc-lbl">Cost Accrued</div><div class="mc-val shim" id="v-cost-${ac.id}">——</div><div class="mc-unit">USD</div></div>
+      </div>
+      <div class="sb">
+        <div><div class="sc-lbl">GRI Score</div><div class="sc-num loading" id="sc-${ac.id}">—</div></div>
+        <div class="badge loading" id="badge-${ac.id}">Calculating</div>
+      </div>
+    </div>`).join("");
+}
+
+// ── Populate card ──────────────────────────────────────────────
+function populateCard(ac, p) {
+  const scEl  = document.getElementById(`sc-${ac.id}`);
+  const bdgEl = document.getElementById(`badge-${ac.id}`);
+  const card  = document.getElementById(`card-${ac.id}`);
+  if (!p) { scEl.textContent = "ERR"; return; }
+
+  const set = (id, val) => { const el = document.getElementById(id); if(el){el.classList.remove("shim");el.textContent=val;} };
+  set(`v-hrs-${ac.id}`,    p.hours_stationary.toFixed(2));
+  set(`v-cong-${ac.id}`,   p.congestion_index.toFixed(3));
+  set(`v-curfew-${ac.id}`, `×${p.curfew_modifier.toFixed(2)}`);
+  set(`v-cargo-${ac.id}`,  p.cargo_multiplier_active ? "⚡ Enhanced" : "Standard");
+  set(`v-cost-${ac.id}`,   `$${p.downtime_cost_usd.toLocaleString()}`);
+
+  scEl.textContent = p.gri.toFixed(1); scEl.className = `sc-num ${p.level}`;
+  const lbs = { nominal:"Nominal", routine:"Routine Maint.", impending:"Impending AOG", critical:"Critical AOG" };
+  bdgEl.textContent = lbs[p.level]; bdgEl.className = `badge ${p.level}`;
+  card.className = `acard ${p.level}${p.critical_anomaly?" pinned":""}`;
+
+  card.querySelectorAll(".btn-action,.penalty-tag,.ticker-block").forEach(e => e.remove());
+  const sb = card.querySelector(".sb");
+
+  const ptag = document.createElement("div");
+  ptag.className = "penalty-tag";
+  ptag.textContent = `$${(p.hourly_rate/1000).toFixed(0)}k/hr exposure`;
+  sb.appendChild(ptag);
+
+  const ticker = document.createElement("div");
+  ticker.className = "ticker-block";
+  ticker.innerHTML = `<div class="ticker-lbl">Accrued downtime</div><div class="ticker-val${p.critical_anomaly?" ticking":""}" id="ticker-${ac.id}">$${p.downtime_cost_usd.toLocaleString()}</div>`;
+  sb.appendChild(ticker);
+
+  if (p.level === "critical" || p.level === "impending") {
+    const btn = document.createElement("button");
+    btn.className = "btn-action";
+    btn.textContent = "✈ Initiate AOG Solution";
+    btn.onclick = () => {
+      const lead = LEADS.find(l => l.aircraft_id === ac.id && l.tier === 1) || LEADS.find(l => l.aircraft_id === ac.id);
+      if (lead) openModal(ac.id, lead.id);
+    };
+    sb.appendChild(btn);
+  }
+}
+
+// ── Lead cards ─────────────────────────────────────────────────
+function renderLeads() {
+  document.getElementById("leads-grid").innerHTML = LEADS.map(lead => {
+    const ac = AIRCRAFT.find(a => a.id === lead.aircraft_id);
+    const waMsg = encodeURIComponent(`Hi ${lead.name.split(" ")[0]}, I'm reaching out regarding an active AOG situation on the ${ac?.short||""} corridor. Our GRI system has flagged a critical downtime event. Are you available for an urgent discussion?`);
+    return `
+      <div class="lead-card">
+        <div>
+          <div class="lead-route-tag">${ac?.short||"—"} · ${ac?.fleet_class}</div>
+          <div class="lead-name">${lead.name}</div>
+          <div class="lead-role">${lead.title}</div>
+          <div class="lead-co">${lead.company}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div class="lc">✉ <a href="mailto:${lead.email}">${lead.email}</a></div>
+          <div class="lc">☎ ${lead.phone}</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <div class="lead-tier">Tier ${lead.tier}</div>
+          <div class="lead-actions">
+            <button class="btn-outreach" onclick="openModal('${lead.aircraft_id}','${lead.id}')">Solution Email →</button>
+            <a class="btn-wa" href="https://wa.me/${lead.phone.replace(/\D/g,"")}?text=${waMsg}" target="_blank">WhatsApp ↗</a>
+          </div>
+        </div>
+        <div style="font-size:8.5px;color:var(--text-mute);line-height:1.5">${lead.notes}</div>
+      </div>`;
+  }).join("");
+}
+
+// ── Alert functions ────────────────────────────────────────────
+function showLockdown(crits) {
+  const p = cache[crits[0].id];
+  document.getElementById("ld-body").textContent =
+    `${crits[0].short} · GRI ${p.gri.toFixed(1)} · ${crits[0].aircraft_type} · $${(p.hourly_rate/1000).toFixed(0)}k/hr · Curfew mod: ×${p.curfew_modifier.toFixed(2)}`;
+  document.getElementById("ld-ticker").textContent = `$${p.downtime_cost_usd.toLocaleString()}`;
+  document.getElementById("lockdown").classList.add("show");
+  const card = document.getElementById(`card-${crits[0].id}`);
+  if (card) setTimeout(() => card.scrollIntoView({behavior:"smooth",block:"start"}), 400);
+}
+function hideLockdown() { document.getElementById("lockdown").classList.remove("show"); }
+
+function startTicker(crits) {
+  stopTicker();
+  const ac = AIRCRAFT.find(a => a.id === crits[0].id);
+  if (!ac) return;
+  const p = cache[ac.id];
+  let accruedSeconds = p.hours_stationary * 3600;
+  const perSecond = ac.hourly_downtime_cost / 3600;
+
+  tickerInterval = setInterval(() => {
+    accruedSeconds += 1;
+    const total = Math.round(accruedSeconds * perSecond);
+    const el = document.getElementById("ld-ticker");
+    if (el) el.textContent = `$${total.toLocaleString()}`;
+    const cardTicker = document.getElementById(`ticker-${ac.id}`);
+    if (cardTicker) cardTicker.textContent = `$${total.toLocaleString()}`;
+  }, 1000);
+}
+function stopTicker() { if (tickerInterval) { clearInterval(tickerInterval); tickerInterval = null; } }
+
+function showToast(crits) {
+  const p = cache[crits[0].id];
+  document.getElementById("toast-body").textContent =
+    `${crits[0].short} GRI ${p.gri.toFixed(1)} · $${p.downtime_cost_usd.toLocaleString()} exposure · Initiate solution now`;
+  const t = document.getElementById("toast"); t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 6000);
+}
+
+function triggerChirp() {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    [0, 0.15, 0.30].forEach(delay => {
+      const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(880, audioCtx.currentTime + delay);
+      osc.frequency.exponentialRampToValueAtTime(440, audioCtx.currentTime + delay + 0.12);
+      gain.gain.setValueAtTime(0, audioCtx.currentTime + delay);
+      gain.gain.linearRampToValueAtTime(0.16, audioCtx.currentTime + delay + 0.02);
+      gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + delay + 0.14);
+      osc.start(audioCtx.currentTime + delay);
+      osc.stop(audioCtx.currentTime + delay + 0.16);
+    });
+  } catch(e) {}
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION 4 — SANDBOX
+// ═══════════════════════════════════════════════════════════════
+function runSandbox() {
+  const acId     = document.getElementById("sb-route").value;
+  const hours    = parseFloat(document.getElementById("sb-hours").value) || 2.5;
+  const cong     = parseFloat(document.getElementById("sb-congestion").value) || 0.30;
+  const modifier = document.getElementById("sb-modifier").value;
+  const ac       = AIRCRAFT.find(a => a.id === acId);
+  if (!ac) return;
+
+  let finalCong = cong;
+  let curfewMod = 1.0;
+
+  if (modifier === "curfew" || modifier === "both")  curfewMod = 1.85;
+  if (modifier === "cargo"  || modifier === "both")  finalCong = Math.min(0.95, cong + 0.32);
+
+  const finalHours = parseFloat((hours * curfewMod).toFixed(2));
+  const gri        = parseFloat(((finalHours / ac.turnaround_window_hrs) * (1 + finalCong) * 100).toFixed(2));
+  const cls        = classifyGRI(gri);
+  const cost       = Math.round(finalHours * ac.hourly_downtime_cost);
+  const rev        = { spreadLow: Math.round(cost*0.20), spreadHigh: Math.round(cost*0.35), srcLow: Math.round(cost*0.05), srcHigh: Math.round(cost*0.10) };
+
+  const res = document.getElementById("sb-result");
+  res.style.display = "flex";
+  res.innerHTML = [
+    ["GRI Score",     `<span class="sbr-val ${cls.level}">${gri.toFixed(1)}</span>`],
+    ["Band",          `<span class="sbr-val ${cls.level}">${cls.short}</span>`],
+    ["Hrs Accrued",   `<span class="sbr-val">${finalHours.toFixed(2)}h</span>`],
+    ["Curfew Mod",    `<span class="sbr-val">×${curfewMod.toFixed(2)}</span>`],
+    ["Downtime Cost", `<span class="sbr-val crit">$${cost.toLocaleString()}</span>`],
+    ["Logistics Spread", `<span class="sbr-val imp">$${rev.spreadLow.toLocaleString()}–$${rev.spreadHigh.toLocaleString()}</span>`],
+    ["Sourcing Comm.", `<span class="sbr-val rout">$${rev.srcLow.toLocaleString()}–$${rev.srcHigh.toLocaleString()}</span>`],
+  ].map(([l,v]) => `<div class="sbr-item"><div class="sbr-lbl">${l}</div>${v}</div>`).join("");
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SECTION 5 — MODAL & EMAIL
+// ═══════════════════════════════════════════════════════════════
+function openModal(acId, leadId) {
+  const ac   = AIRCRAFT.find(a => a.id === acId);
+  const lead = LEADS.find(l => l.id === leadId);
+  const p    = cache[acId];
+  if (!ac || !lead) return;
+
+  activeModal = { ac, lead, payload: p };
+  document.getElementById("m-sub").textContent = `${ac.route} · ${lead.company}`;
+
+  document.getElementById("m-meta").innerHTML = [
+    ["GRI Score",      `<span class="mm-val red">${p ? p.gri.toFixed(1) : "—"}</span>`],
+    ["Band",           `<span class="mm-val red">${p ? p.band : "—"}</span>`],
+    ["Hrs Stationary", p ? `${p.hours_stationary.toFixed(2)}h` : "—"],
+    ["Downtime Cost",  p ? `$${p.downtime_cost_usd.toLocaleString()}` : "—"],
+    ["Curfew Mod",     p ? `×${p.curfew_modifier.toFixed(2)}` : "—"],
+    ["Cargo Enhanced", p ? (p.cargo_multiplier_active ? "Yes ⚡" : "No") : "—"],
+    ["Hourly Rate",    `$${(ac.hourly_downtime_cost/1000).toFixed(0)}k/hr`],
+  ].map(([l,v]) => `<div class="mm-item"><div class="mm-lbl">${l}</div><div class="mm-val">${v}</div></div>`).join("");
+
+  const email = buildEmail(ac, lead, p);
+  document.getElementById("m-subj").innerHTML = `<span>Subject: </span><span>${email.subject}</span>`;
+  document.getElementById("m-email").innerHTML = email.html;
+
+  const mailto = `mailto:${lead.email}?subject=${encodeURIComponent(email.subject)}&body=${encodeURIComponent(email.plain)}`;
+  document.getElementById("btn-mailto").href = mailto;
+
+  const waMsg = encodeURIComponent(
+    `URGENT AOG — ${ac.short}\n\nHi ${lead.name.split(" ")[0]},\n\nOur GRI monitor has flagged a Critical AOG Anomaly on the ${ac.route} corridor. Current GRI: ${p?p.gri.toFixed(1):"—"} [${p?p.band:"—"}].\n\nEstimated downtime exposure: ${p?"$"+p.downtime_cost_usd.toLocaleString():"—"} and accumulating at $${(ac.hourly_downtime_cost/1000).toFixed(0)}k/hr.\n\nWe have an immediate logistics solution available. Are you available to discuss?`
+  );
+  document.getElementById("btn-wa-modal").href = `https://wa.me/${lead.phone.replace(/\D/g,"")}?text=${waMsg}`;
+  document.getElementById("overlay").classList.add("open");
+}
+
+function buildEmail(ac, lead, p) {
+  const today = new Date();
+  const fmt = d => d.toLocaleDateString("en-GB",{day:"2-digit",month:"long",year:"numeric"});
+  const fmtTs = d => d.toLocaleString("en-GB",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit",timeZoneName:"short"});
+
+  const gri       = p ? p.gri.toFixed(1) : "N/A";
+  const band      = p ? p.band : "N/A";
+  const cost      = p ? `USD ${p.downtime_cost_usd.toLocaleString()}` : "N/A";
+  const hourlyStr = `USD ${(ac.hourly_downtime_cost/1000).toFixed(0)},000/hour`;
+  const spreadLo  = p ? `USD ${Math.round(p.downtime_cost_usd*0.20).toLocaleString()}` : "N/A";
+  const spreadHi  = p ? `USD ${Math.round(p.downtime_cost_usd*0.35).toLocaleString()}` : "N/A";
+  const srcLo     = p ? `USD ${Math.round(p.downtime_cost_usd*0.05).toLocaleString()}` : "N/A";
+  const srcHi     = p ? `USD ${Math.round(p.downtime_cost_usd*0.10).toLocaleString()}` : "N/A";
+  const curfewNote = p && p.curfew_modifier > 1.0
+    ? `\nAirport curfew analysis indicates ${ac.destination.code} is currently under active noise restriction protocols (curfew modifier: ×${p.curfew_modifier.toFixed(2)}). This exponentially multiplies the grounding window by restricting inbound component delivery flights and extending customs clearance lead times.\n`
+    : "";
+  const cargoNote = p && p.cargo_multiplier_active
+    ? `\nCargo classification alert: ${ac.cargo_type === "pharmaceutical" ? "Cold-chain pharmaceutical" : "Time-sensitive e-commerce"} payload has triggered an Operational Impact Multiplier. Every additional hour of grounding compounds deterioration risk and contractual penalty exposure.\n`
+    : "";
+
+  const subject = `URGENT AOG SOLUTION — ${ac.tail_reg} — ${ac.short} — GRI ${gri} [${band.toUpperCase()}] — ${fmtTs(today)}`;
+
+  const plain = `URGENT — AIRCRAFT ON GROUND — IMMEDIATE ATTENTION REQUIRED
+
+For the Attention of the AOG Desk / Operations Authority
+
+${lead.name}
+${lead.title}
+${lead.company}
+
+${fmt(today)}
+
+Dear ${lead.name.split(" ")[0]},
+
+Re: AOG Logistics Solution — ${ac.aircraft_type} · Tail: ${ac.tail_reg} · ${ac.origin.code} / ${ac.destination.code}
+
+I am writing to you on an urgent operational basis in connection with a confirmed Aircraft On Ground (AOG) situation on the ${ac.route} corridor.
+
+Our proprietary Grounding Risk Index (GRI) monitoring system has registered a score of ${gri} on this route as at ${fmtTs(today)}, triggering a ${band.toUpperCase()} classification. Financial downtime exposure is currently accruing at ${hourlyStr}.
+
+GRI ANALYSIS — CURRENT INPUTS:
+
+  Hours Stationary:             ${p ? p.hours_stationary.toFixed(2) : "N/A"}h
+  Turnaround Baseline:          ${ac.turnaround_window_hrs}h
+  Airport Congestion Index:     ${p ? p.congestion_index.toFixed(3) : "N/A"}
+  Curfew / Customs Modifier:    ×${p ? p.curfew_modifier.toFixed(2) : "1.00"}
+  Cargo Operational Multiplier: ${p && p.cargo_multiplier_active ? "ACTIVE ⚡" : "Not active"}
+  Estimated Downtime Cost:      ${cost}
+  Accrual Rate:                 ${hourlyStr}
+${curfewNote}${cargoNote}
+AOG RESOLUTION CAPABILITY:
+
+We have immediate logistics coordination capability on this corridor and can activate emergency component routing, charter freight positioning, and parts expediting within the current operational window.
+
+Our solution architecture for this activation:
+
+  Transit routing:  Priority channel via ${ac.origin.code} → ${ac.destination.code}
+  Coordination:     24/7 ops desk with direct ramp authority liaison
+  Lead time:        Target sub-4-hour AOG resolution from go-ahead
+  Documentation:    Full EASA/FAA-compliant airworthiness release coordination
+
+COMMERCIAL STRUCTURE — REVENUE SCHEDULE:
+
+  1. Primary Logistics Spread
+     Emergency logistics coordination fee: 20–35% above base transit cost
+     Range for this activation: ${spreadLo} – ${spreadHi}
+     Reflects: expedited routing, priority handling, 24/7 ops coordination
+
+  2. Priority Routing Retainer (Optional)
+     Monthly standing agreement guaranteeing sub-4-hour AOG response
+     for all future grounding events across your ${ac.fleet_class} fleet
+     Contact us for tiered pricing based on fleet size
+
+  3. Parts Sourcing Commission
+     In the event of third-party component sourcing via Satair, Aviall,
+     HEICO, or certified pooling networks: 5–10% of parts invoice value
+     Range for this activation: ${srcLo} – ${srcHi}
+
+We are ready to mobilise on your authorisation. Please treat this as time-critical.
+
+Yours urgently,
+
+[Your Name]
+[Your Title]
+[Your Company] · AOG Logistics & Aviation Parts Expediting
+[Direct Line] · [Email] · Available 24/7
+
+—
+GRI Score at dispatch: ${gri} [${band}]
+Formula: GRI = (hrs_stationary / turnaround_window) × (1 + congestion_multiplier) × 100
+Downtime accruing: ${hourlyStr}`;
+
+  const parts = plain.split(/NON-CIRCUMVENTION|COMMERCIAL STRUCTURE/);
+
+  const revSection = `
+
+──────────────────────────────────────────────────────────────────
+COMMERCIAL STRUCTURE — REVENUE SCHEDULE
+
+  1. Primary Logistics Spread
+     Emergency logistics coordination fee: 20–35% above base transit cost
+     Range for this activation: ${spreadLo} – ${spreadHi}
+
+  2. Priority Routing Retainer (Optional)
+     Monthly standing agreement: sub-4-hour AOG response guarantee
+     Contact us for tiered fleet pricing
+
+  3. Parts Sourcing Commission
+     Third-party sourcing via certified networks: 5–10% of invoice
+     Range for this activation: ${srcLo} – ${srcHi}`;
+
+  const ncndSection = `
+──────────────────────────────────────────────────────────────────
+NON-CIRCUMVENTION, NON-DISCLOSURE & FEE PROTECTION — NCNDA NOTICE
+──────────────────────────────────────────────────────────────────
+This communication is transmitted under and protected by a Non-Circumvention, Non-Disclosure and Fee Protection Agreement (NCNDA) consistent with IATA and FIATA intermediary commercial practice. All logistics fees, coordination margins, parts sourcing commissions, and retainer revenues arising from any transaction, engagement, or AOG resolution activity introduced, facilitated, or originated through this communication are irrevocably protected and payable in full to [Your Company Name]. Any circumvention, bypass, or extinguishment of these fee entitlements — whether direct, indirect, or through third-party arrangement — shall constitute a material breach and be subject to full legal remedy under applicable aviation commercial law and international trade regulations. Receipt of this communication constitutes acknowledgement of these terms.
+──────────────────────────────────────────────────────────────────`;
+
+  const fullPlain = plain + revSection + ncndSection + `
+
+Yours urgently,
+
+[Your Name] · [Company] · AOG Logistics
+[Phone] · [Email] · 24/7`;
+
+  const htmlBody = `<span>${escHtml(plain)}</span>
+<div class="rev-block"><div class="rev-block-lbl">Commercial Structure — Revenue Schedule</div>${escHtml(revSection.replace(/─+/g,"").trim())}</div>
+<div class="ncnd-block"><div class="ncnd-lbl">NCNDA — Non-Circumvention Fee Protection Notice</div>${escHtml(ncndSection.replace(/─+/g,"").trim())}</div>`;
+
+  return { subject, plain: fullPlain, html: htmlBody };
+}
+
+function closeModal(event) {
+  if (event && event.target !== document.getElementById("overlay")) return;
+  document.getElementById("overlay").classList.remove("open");
+}
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+function copyEmail() {
+  if (!activeModal) return;
+  const email = buildEmail(activeModal.ac, activeModal.lead, activeModal.payload);
+  navigator.clipboard.writeText(`Subject: ${email.subject}\n\n${email.plain}`).then(() => {
+    const btn = document.getElementById("btn-copy");
+    btn.textContent = "✓ Copied"; btn.classList.add("ok");
+    setTimeout(() => { btn.textContent = "Copy Email"; btn.classList.remove("ok"); }, 2400);
+  });
+}
+
+function escHtml(s) { return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+</script>
+</body>
+</html>
